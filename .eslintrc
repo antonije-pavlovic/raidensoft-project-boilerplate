@@ -29,6 +29,8 @@
         "curly": "error",
         "camelcase": "error",
         "consistent-return": "error",
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "indent": ["error", 2],
+        "comma-dangle": ["error", "only-multiline"]
       }
 }
