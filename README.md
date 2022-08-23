@@ -9,7 +9,7 @@ ESLint, isn't intended to perform code style fixes automatically though.
 
 Usefull link:
 1. [ES Lint rules](https://eslint.org/docs/latest/rules/)
-2. [ESlint recommended rules][https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts]
+2. [ESlint recommended rules](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts)
 3. [Typescript esl lint recomended rules](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/recommended.ts)
 
 # pre commit and tartufo scaner
