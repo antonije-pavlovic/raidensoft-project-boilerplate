@@ -2,7 +2,7 @@
 
 echo "Fixing lint errors..."
 
-npm run lint:Fixing
+npm run lint:fix
 echo "Looking for lint errors..."
 
 eslintOutput='npm run lint'
