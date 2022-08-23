@@ -30,4 +30,4 @@
         "camelcase": "error",
         "consistent-return": "error"
       }
-  }
+}
