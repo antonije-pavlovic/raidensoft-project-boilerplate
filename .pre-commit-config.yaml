@@ -6,4 +6,4 @@ repos:
         description: Check for lint errors
         entry: ./.github/hooks/eslint.sh
         language: script
-        types_or: [ ts ]
+        types_or: [javascript, jsx, ts, tsx]

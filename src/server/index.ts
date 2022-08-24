@@ -7,5 +7,4 @@ app.get('/', function (req: Request, res: Response) {
   res.send('Hello Work' + req.body);
 });
 
-app.listen(3000)
-
+app.listen(3000);
