@@ -2,7 +2,9 @@
 
 echo "Looking for lint errors..."
 
-eslintOutput='npm run lint'
+npm run lint
+
+eslintOutput='npm run lint:fix'
 
 if [[ "$?" == 0 ]]; then
     echo "ESlint Passed!"
