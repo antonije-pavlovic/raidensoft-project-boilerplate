@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
-    "start": "node dist/server/index.js",
+    "start": "node dist/src/services/api/api.service.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix"
   },
