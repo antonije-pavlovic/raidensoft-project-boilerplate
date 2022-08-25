@@ -1,9 +1,10 @@
 name: CI-branches
 
 on:
+  workflow_dispatch:
   push:
-  branches-ignore:
-    - main
+    branches-ignore:
+      - main
 
 jobs:
   build:
