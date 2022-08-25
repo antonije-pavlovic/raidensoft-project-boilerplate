@@ -1,0 +1,19 @@
+name: CI-branches
+
+on:
+  push:
+  branches-ignore:
+    - main
+
+jobs:
+  build:
+    on: ubuntu-latest
+  
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Install modules
+      run: npm Install
+      
+    - name: Check es lint
+      run: npm run lint
