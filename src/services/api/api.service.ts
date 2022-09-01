@@ -1,8 +1,9 @@
 import express, { Express } from 'express';
-
-// Load all routes dinamically
+import routes from './routes';
 
 // express setup
 const app: Express = express();
 
-app.listen(3000);
+app.use(routes);
+
+export default app;
