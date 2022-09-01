@@ -23,3 +23,9 @@ pip install pre-commit
 pre-commit install --install-hooks
 
 ```
+
+# Project architecture
+
+## API service
+Api service consist of 3 parts: middleware, route and api service.
+
