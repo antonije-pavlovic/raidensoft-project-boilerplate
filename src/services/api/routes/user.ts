@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import UserController from '../../user/user.controller';
-import catcheError from '../middlewares/error/catch-error';
+import catcheError from '../../../errors/catch-error';
 
 const router = Router();
 

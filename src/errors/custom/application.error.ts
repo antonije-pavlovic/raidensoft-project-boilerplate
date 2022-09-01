@@ -1,4 +1,4 @@
-import { IError } from './error.model';
+import { IError } from '../error.model';
 
 export default class ApplicationError extends Error {
   public code: string;

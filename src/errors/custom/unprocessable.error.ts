@@ -1,5 +1,5 @@
+import { HTTP_ERROR_CODES } from '../http.error.codes';
 import ApplicationError from './application.error';
-import { HTTP_ERROR_CODES } from './http.error.codes';
 
 export default class UnprocessableError extends ApplicationError {
 

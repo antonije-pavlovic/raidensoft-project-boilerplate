@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UnprocessableError from '../errors/unprocessable.error';
+import UnprocessableError from '../../errors/custom/unprocessable.error';
 
 export default class UserController {
   public static get(request: Request, response: Response) {
