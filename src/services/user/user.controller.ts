@@ -6,4 +6,13 @@ export default class UserController {
     throw new UnprocessableError();
     response.send(`body: ${request.body}`);
   }
+
+  public static create(request: Request, response: Response) {
+    console.log(request.params);
+    response.send(`body: ${request.body}`);
+  }
+
+  public static update(request: Request, response: Response) {
+    response.send(`body: ${request.body}`);
+  }
 }
