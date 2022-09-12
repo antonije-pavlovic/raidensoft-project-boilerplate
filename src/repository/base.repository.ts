@@ -1,32 +1,32 @@
-import { Model } from 'mongoose';
-import IRead from './interfaces/read.interface';
-import IWrite from './interfaces/write.interface';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AnyParamConstructor, ReturnModelType } from '@typegoose/typegoose/lib/types';
+import { MongooseOptions } from 'mongoose';
 
-export default abstract class BaseRepository<T, K, J, R, F, G> implements IWrite<T, K, J, R>, IRead<T, F, G> {
-  protected model: Model<any>;
+export default class BaseRepository<T extends AnyParamConstructor<any>> {
 
-  constructor(model: Model<any>) {
+  protected model: ReturnModelType<T>;
+
+  constructor(model: ReturnModelType<T>) {
     this.model = model;
   }
 
-  async create(item: T): Promise<T> {
-    return await this.model.create(item);
+  protected async create(doc: T): Promise<T> {
+    return await this.model.create(doc);
   }
 
-  async update(id: string, item: T): Promise<T> {
-    return this.model.updateOne()
+  protected async update(filter: any, params: any,  options?: MongooseOptions): Promise<T> {
+    return await this.model.findOneAndUpdate(filter, params, options).lean();
   }
 
-  async delete(id: string): boolean {
-    throw new Error('Method not implemented');
+  protected async delete(filter: any, options?: MongooseOptions): Promise<boolean> {
+    return await this.model.findOneAndDelete(filter, options).lean();
   }
 
-  async find(item: T): Promise<T[]> {
-    throw new Error('Method not implemented');
+  protected async find(filter: any, options: MongooseOptions): Promise<T[]> {
+    return await this.model.find(filter, options).lean();
   }
 
-  async indOne(id: string): Promise<T> {
-    throw new Error('Method not implemented');
+  protected async get(filter: any, options: MongooseOptions): Promise<T> {
+    return await this.model.findOne(filter, options).lean();
   }
-
 }

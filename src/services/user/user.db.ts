@@ -1,11 +1,17 @@
 import { getModelForClass } from '@typegoose/typegoose';
+import { ObjectId } from 'mongoose';
 import { index, prop } from 'typegoose';
-import { IUser } from './user.models';
+import { IUser } from './user.types';
 
 @index({ age: 1 })
-class User implements IUser {
+export class User implements IUser {
+
+  @prop()
+  public _id: ObjectId
+
   @prop()
   public name: string;
+
   @prop()
   public age: number;
 }
@@ -15,6 +21,7 @@ const UserModel = getModelForClass(User, {
     timestamps: true
   }
 });
+
 
 export default UserModel;
 
