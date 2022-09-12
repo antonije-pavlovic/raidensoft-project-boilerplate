@@ -1,5 +1,5 @@
 import express, { Express } from 'express';
-import formatError from '../../errors/format-errorr';
+import formatError from '../../errors/format.errorr';
 import routes from './routes';
 import bodyParser from 'body-parser';
 // express setup

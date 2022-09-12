@@ -11,7 +11,6 @@
     ],
     "rules": { 
         "no-console": 1,
-        "semi": "error",
         "no-trailing-spaces": "error",
         "max-len": ["error", { "code": 120 }],
         "max-statements-per-line": ["error", { "max": 1 }],

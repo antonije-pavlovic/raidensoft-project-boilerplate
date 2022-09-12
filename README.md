@@ -29,3 +29,15 @@ pre-commit install --install-hooks
 ## API service
 Api service consist of 3 parts: middleware, route and api service.
 
+# Code style rules
+1. All static values must be constants and placed in constants file
+2. Constants should be written in snake case format(with underscore as separator)
+
+Example
+
+```
+const TIME_IN_SECONDS = {
+    FIVE_MINUTES: 5 * 60;
+}
+
+```
