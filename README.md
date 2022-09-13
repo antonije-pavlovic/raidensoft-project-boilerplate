@@ -41,3 +41,8 @@ const TIME_IN_SECONDS = {
 }
 
 ```
+
+# Service structure
+## Endpoint layer
+This part of system should convert data and be responsible what is going out and in of system.
+

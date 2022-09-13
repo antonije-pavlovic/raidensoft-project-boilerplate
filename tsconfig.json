@@ -18,8 +18,10 @@
       "noImplicitAny": false,
       "noImplicitThis": true,
       "strictNullChecks": true,
-      "experimentalDecorators": true
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "emitDecoratorMetadata": true
     },
-    "include": ["src/**/**/**/*.ts"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "include": ["src/**/**/**/**/*.ts"],
+    "exclude": ["node_modules"]
   }

@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongoose';
+import { FindParams } from '../../repository/repository.models';
 
 export interface IUser {
     _id: ObjectId;
@@ -6,13 +7,5 @@ export interface IUser {
     age: number;
 }
 
-export interface UserRemove {
-    _id: ObjectId
-}
 
-export interface UserFind {
-    name?: string;
-    age?: number;
-}
-
-// export type UserFind = FindParams<Omit<IUser, 'age'>>;
+export type UserGet = FindParams<Omit<IUser, 'age'>>;
