@@ -1,23 +1,31 @@
 import { Router } from 'express';
 import UserEndpoint from '../../user/user.endpoint';
-import catcheError from '../../../errors/catch.error';
+import catchErrors from '../../../errors/catch.error';
 import { validateUser } from '../../user/user.validate';
 
-// TODO: Should we create class for this file UserRoute
+class UserRoute {
+  public router: Router;
+  private userEndpoint: UserEndpoint;
 
-const router = Router();
+  constructor() {
+    this.router = Router();
+    this.userEndpoint = new UserEndpoint();
+  }
 
-router.get('/',
-  catcheError(UserEndpoint.get)
-);
+  public registerRoutes() {
 
-router.post('/',
-  validateUser,
-  catcheError(UserEndpoint.create)
-);
+    this.router.get('/',
+      catchErrors(this.userEndpoint.get, this.userEndpoint)
+    );
 
-router.put('/:id',
-  catcheError(UserEndpoint.update)
-);
+    this.router.post('/',
+      validateUser,
+      catchErrors(this.userEndpoint.create, this.userEndpoint)
+    );
+    return this.router;
+  }
+}
 
-export default router;
+const userRoute = new UserRoute();
+
+export default userRoute;
