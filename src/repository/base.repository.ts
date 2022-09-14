@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable consistent-return */
 
-import { MongooseOptions } from 'mongoose';
+import mongoose, { MongooseOptions } from 'mongoose';
 import ConflictError from '../errors/custom/conflict.error';
 import NotFoundError from '../errors/custom/not.found';
 import UnprocessableError from '../errors/custom/unprocessable.error';
@@ -9,16 +9,25 @@ import UnprocessableError from '../errors/custom/unprocessable.error';
 export default class BaseRepository {
 
   protected model: any;
+  protected _connection;
 
   constructor(model: any) {
     this.model = model;
+    this._connect()
   }
 
-  // TODO: Log the error
+  private async _connect() {
+
+    this._connection = await mongoose.connect('mongodb://127.0.0.1:27017/test');
+    console.log('MongooseMixin: connected successfully.');
+    // TODO: handle disconnections
+    // TODO: handlle errors
+  }
   protected async _create(doc: any | any[], options?: MongooseOptions) {
     try {
       return await this.model.create(doc, options);
     } catch (error) {
+      // TODO: log error and send 500 applicatoin http error
       if(error.code === 11000) {
         throw new ConflictError();
       }

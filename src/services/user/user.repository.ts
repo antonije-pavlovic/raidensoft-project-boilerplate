@@ -1,10 +1,10 @@
 import { MongooseOptions } from 'mongoose';
 import BaseRepository from '../../repository/base.repository';
-import { IUser, UserGet } from './user.types';
+import { IUser, IUserDB, UserGet } from './user.types';
 
 export default class UserRepository extends BaseRepository {
 
-  public async create(doc: IUser, options?: MongooseOptions) {
+  public async create(doc: IUserDB, options?: MongooseOptions): Promise<IUser> {
     return await super._create(doc, options);
   }
 
