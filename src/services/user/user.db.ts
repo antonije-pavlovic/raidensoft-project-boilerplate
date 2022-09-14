@@ -1,13 +1,8 @@
-import { getModelForClass } from '@typegoose/typegoose';
-import { ObjectId } from 'mongoose';
-import { index, prop } from 'typegoose';
-import { IUser } from './user.types';
+import { getModelForClass, index, prop } from '@typegoose/typegoose';
+import { IUserDB } from './user.types';
 
 @index({ age: 1 })
-export class User implements IUser {
-
-  @prop()
-  public _id: ObjectId
+export class User implements IUserDB {
 
   @prop()
   public name: string;
