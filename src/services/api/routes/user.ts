@@ -1,9 +1,8 @@
 import { Router } from 'express';
 import UserEndpoint from '../../user/user.endpoint';
-import catcheError from '../../../errors/catch.error';
+import catchErrors from '../../../errors/catch.error';
 import { validateUser } from '../../user/user.validate';
 
-// TODO: Maybe this should be singleton
 class UserRoute {
   public router: Router;
   private userEndpoint: UserEndpoint;
@@ -16,12 +15,12 @@ class UserRoute {
   public registerRoutes() {
 
     this.router.get('/',
-      catcheError(this.userEndpoint.get)
+      catchErrors(this.userEndpoint.get, this.userEndpoint)
     );
 
     this.router.post('/',
       validateUser,
-      catcheError(this.userEndpoint.create)
+      catchErrors(this.userEndpoint.create, this.userEndpoint)
     );
     return this.router;
   }
