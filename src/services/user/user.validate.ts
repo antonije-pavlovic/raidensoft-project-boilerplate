@@ -2,8 +2,8 @@ import { body } from 'express-validator';
 import validator from '../api/middlewares/validator';
 
 export const validateUser = validator([
-  body('age')
+  body('name')
     .notEmpty()
-    .isInt()
-    .withMessage('Age is required')
+    .isString()
+    .withMessage('Name is required')
 ]);

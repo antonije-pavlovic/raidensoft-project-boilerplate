@@ -22,6 +22,15 @@ class UserRoute {
       validateUser,
       catchErrors(this.userEndpoint.create, this.userEndpoint)
     );
+
+    this.router.put('/',
+      catchErrors(this.userEndpoint.update, this.userEndpoint)
+    );
+
+    this.router.delete('/',
+      catchErrors(this.userEndpoint.delete, this.userEndpoint)
+    );
+
     return this.router;
   }
 }

@@ -5,10 +5,16 @@ import { IUserDB } from './user.types';
 export class User implements IUserDB {
 
   @prop()
+  public  lastName: string;
+
+  @prop()
   public name: string;
 
   @prop()
-  public age: number;
+  public  email: string;
+
+  @prop()
+  public phone: string;
 }
 
 const UserModel = getModelForClass(User, {

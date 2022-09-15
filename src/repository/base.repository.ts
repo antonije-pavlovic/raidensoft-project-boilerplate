@@ -27,6 +27,7 @@ export default class BaseRepository {
     try {
       return await this.model.create(doc, options);
     } catch (error) {
+      console.log(error)
       // TODO: log error and send 500 applicatoin http error
       if(error.code === 11000) {
         throw new ConflictError();
@@ -45,7 +46,7 @@ export default class BaseRepository {
   /**
    * We set options `new` property to true, to return the document after update was applied.
    */
-  protected async update(filter: any, params: any,  options?: any): Promise<any> {
+  protected async _update(filter: any, params: any,  options?: any): Promise<any> {
     try {
       if (options) {
         options.new = true;
@@ -58,6 +59,7 @@ export default class BaseRepository {
       if (!result) {
         throw new NotFoundError(filter);
       }
+      return result;
     } catch(error) {
       // TODO: Log the error and transform to https error
     }
