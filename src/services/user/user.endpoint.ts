@@ -1,5 +1,7 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { ApiBodyRequest, ApiQueryRequest } from '../api/api.types';
 import UserService from './user.service';
+import { UserGet, IUser, UpdateUser, DeleteUser, UpdateUserAPI } from './user.types';
 
 export default class UserEndpoint {
 
@@ -8,13 +10,43 @@ export default class UserEndpoint {
     this.userService = new UserService();
   }
 
-  public async create(request: Request, response: Response) {
+  public async create(request: ApiBodyRequest<IUser>, response: Response) {
     const newUser = await this.userService.create(request.body);
     response.status(200).json(newUser);
   }
 
-  public get(request: Request, response: Response) {
-    response.send(`body: ${request.body}`);
+  public async get(request: ApiQueryRequest<UserGet>, response: Response) {
+    const getParams: UserGet = {
+      _id: request.query._id
+    };
+
+    if(request.body.email) {
+      getParams.email = request.body.email
+    }
+
+    const user = await this.userService.get(getParams);
+    response.status(200).json(user);
   }
 
+  public async update(request: ApiBodyRequest<UpdateUserAPI>, response: Response) {
+    const updateParams: UpdateUser = {
+      filter: {
+        _id: request.body._id
+      },
+      update: {
+        email: request.body.email,
+        lastName: request.body.lastName,
+        name: request.body.name,
+        phone: request.body.phone
+      }
+    };
+
+    const updatedUser = await this.userService.update(updateParams);
+    response.status(200).json(updatedUser);
+  }
+
+  public async delete(request: ApiQueryRequest<DeleteUser>, response: Response) {
+    const deletedUser = await this.userService.delete(request.query);
+    response.status(200).json(deletedUser);
+  }
 }
