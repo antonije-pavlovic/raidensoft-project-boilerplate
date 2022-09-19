@@ -10,12 +10,12 @@ export default class UserEndpoint {
     this.userService = new UserService();
   }
 
-  public async create(request: ApiBodyRequest<IUser>, response: Response) {
+  public create = async (request: ApiBodyRequest<IUser>, response: Response) => {
     const newUser = await this.userService.create(request.body);
     response.status(200).json(newUser);
   }
 
-  public async get(request: ApiQueryRequest<UserGet>, response: Response) {
+  public get = async (request: ApiQueryRequest<UserGet>, response: Response) => {
     const getParams: UserGet = {
       _id: request.query._id
     };
@@ -28,7 +28,7 @@ export default class UserEndpoint {
     response.status(200).json(user);
   }
 
-  public async update(request: ApiBodyRequest<UpdateUserAPI>, response: Response) {
+  public update = async (request: ApiBodyRequest<UpdateUserAPI>, response: Response) => {
     const updateParams: UpdateUser = {
       filter: {
         _id: request.body._id
@@ -45,7 +45,7 @@ export default class UserEndpoint {
     response.status(200).json(updatedUser);
   }
 
-  public async delete(request: ApiQueryRequest<DeleteUser>, response: Response) {
+  public delete = async (request: ApiQueryRequest<DeleteUser>, response: Response) => {
     const deletedUser = await this.userService.delete(request.query);
     response.status(200).json(deletedUser);
   }

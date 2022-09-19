@@ -15,20 +15,20 @@ class UserRoute {
   public registerRoutes() {
 
     this.router.get('/',
-      catchErrors(this.userEndpoint.get, this.userEndpoint)
+      catchErrors(this.userEndpoint.get)
     );
 
     this.router.post('/',
       validateUser,
-      catchErrors(this.userEndpoint.create, this.userEndpoint)
+      catchErrors(this.userEndpoint.create)
     );
 
     this.router.put('/',
-      catchErrors(this.userEndpoint.update, this.userEndpoint)
+      catchErrors(this.userEndpoint.update)
     );
 
     this.router.delete('/',
-      catchErrors(this.userEndpoint.delete, this.userEndpoint)
+      catchErrors(this.userEndpoint.delete)
     );
 
     return this.router;
