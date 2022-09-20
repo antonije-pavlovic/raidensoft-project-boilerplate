@@ -16,14 +16,15 @@ export default class BaseRepository {
     this._connect()
   }
 
-  private async _connect() {
+  private _connect = async () => {
 
     this._connection = await mongoose.connect('mongodb://127.0.0.1:27017/test');
     console.log('MongooseMixin: connected successfully.');
     // TODO: handle disconnections
     // TODO: handlle errors
   }
-  protected async _create(doc: any | any[], options?: MongooseOptions) {
+
+  protected _create = async (doc: any | any[], options?: MongooseOptions) => {
     try {
       return await this.model.create(doc, options);
     } catch (error) {
@@ -46,7 +47,7 @@ export default class BaseRepository {
   /**
    * We set options `new` property to true, to return the document after update was applied.
    */
-  protected async _update(filter: any, params: any,  options?: any): Promise<any> {
+  protected _update = async (filter: any, params: any,  options?: any): Promise<any> => {
     try {
       if (options) {
         options.new = true;
@@ -65,7 +66,7 @@ export default class BaseRepository {
     }
   }
 
-  protected async _delete(filter: any, options?: MongooseOptions) {
+  protected _delete = async (filter: any, options?: MongooseOptions) => {
     try {
       const result = await this.model.findOneAndDelete(filter, options).lean();
       if (!result) {
@@ -78,7 +79,7 @@ export default class BaseRepository {
     }
   }
 
-  protected async _find(filter: any, options?: MongooseOptions) {
+  protected _find = async (filter: any, options?: MongooseOptions) => {
     try {
       return await this.model.find(filter, options).lean();
 
@@ -87,7 +88,7 @@ export default class BaseRepository {
     }
   }
 
-  protected async _get(filter: any, options?: MongooseOptions) {
+  protected _get = async (filter: any, options?: MongooseOptions) => {
     try {
       const invalidValues: any[] = [];
 
