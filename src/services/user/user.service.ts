@@ -10,7 +10,7 @@ export default class UserService {
     this.userRepository = new UserRepository(UserModel);
   }
 
-  public async create(user: IUser): Promise<IUser> {
+  public create = async (user: IUser): Promise<IUser> => {
     return await this.userRepository.create(user);
   }
 
