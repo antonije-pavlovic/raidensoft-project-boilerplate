@@ -5,6 +5,7 @@ import mongoose, { MongooseOptions } from 'mongoose';
 import ConflictError from '../errors/custom/conflict.error';
 import NotFoundError from '../errors/custom/not.found';
 import UnprocessableError from '../errors/custom/unprocessable.error';
+import config from '../config/config';
 
 export default class BaseRepository {
 
@@ -18,7 +19,7 @@ export default class BaseRepository {
 
   private _connect = async () => {
 
-    this._connection = await mongoose.connect('mongodb://127.0.0.1:27017/test');
+    this._connection = await mongoose.connect(config.mongo.url);
     console.log('MongooseMixin: connected successfully.');
     // TODO: handle disconnections
     // TODO: handlle errors
