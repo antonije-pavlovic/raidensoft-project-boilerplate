@@ -29,9 +29,22 @@ pre-commit install --install-hooks
 ## API service
 Api service consist of 3 parts: middleware, route and api service.
 
-# Code style rules
-1. All static values must be constants and placed in constants file
-2. Constants should be written in snake case format(with underscore as separator)
+# Service structure
+Service consist od few files, and each file represent one layer in architecture.
+If service is missing some of file, for example service do not have endpoint laye, it is obvious that service is not exposed to external world, and
+can be call only from inside od application.
+If service do not have repository that means service is communicating with some other service and it's only resposibility is busines logic.
+
+## Endpoint layer
+This part of system should convert data and be responsible what is going in and out of system.
+Here we should prepare data(object) for further interaction with them. Also convert and delete any sensitive properties when data is leaving the system.
+
+
+# Conventions
+
+## Variables
+
+1.  All static values must be constants and placed in `types` file in appropriate service and written in UPPER_SNAKE_CASE
 
 Example
 
@@ -42,7 +55,6 @@ const TIME_IN_SECONDS = {
 
 ```
 
-# Service structure
-## Endpoint layer
-This part of system should convert data and be responsible what is going out and in of system.
+## Files
+All files belonging to one service(entity) should be placed under service directory
 
